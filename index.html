@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>⚡ BYPASS DINDEGDPS ID VERIFICATION | TEMP ACCOUNT MAKER ⚡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* funny "hacker" feel */
+        }
+
+        body {
+            min-height: 100vh;
+            background: repeating-linear-gradient(45deg, #0a0f1e, #0a0f1e 30px, #12172a 30px, #12172a 60px);
+            font-family: 'Courier New', 'Comic Neue', 'Impact', 'Arial Black', monospace;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: crosshair;
+        }
+
+        body.preload {
+            overflow: hidden;
+        }
+
+        body.preload .hero-card {
+            opacity: 0.2;
+            transform: scale(0.98);
+            filter: blur(2px);
+            pointer-events: none;
+        }
+
+        .boot-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            background: radial-gradient(circle at center, rgba(0, 255, 200, 0.15), rgba(0, 0, 0, 0.95) 55%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.35s ease;
+        }
+
+        .boot-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .boot-panel {
+            width: min(92vw, 560px);
+            border: 2px solid #00ffd5;
+            border-radius: 24px;
+            background: #03060dcc;
+            box-shadow: 0 0 18px rgba(0, 255, 200, 0.45), inset 0 0 14px rgba(0, 255, 200, 0.15);
+            padding: 20px;
+            color: #90ffe8;
+        }
+
+        .boot-title {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .boot-progress {
+            height: 14px;
+            border-radius: 999px;
+            background: #111829;
+            border: 1px solid #00ffd5aa;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .boot-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00ff88, #00ccff, #85ff00);
+            box-shadow: 0 0 10px #00ffd5;
+            transition: width 0.25s ease;
+        }
+
+        .boot-lines {
+            font-size: 0.82rem;
+            line-height: 1.4;
+            min-height: 3.4em;
+            color: #b9fff2;
+        }
+
+        .boot-lines span {
+            display: block;
+            opacity: 0;
+            animation: lineIn 0.2s forwards;
+        }
+
+        @keyframes lineIn {
+            from { opacity: 0; transform: translateY(3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Flashy overlay glitch effect */
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255,0,200,0.1) 0%, rgba(0,255,255,0.05) 100%);
+            z-index: 1;
+            animation: hueShift 0.5s infinite alternate;
+        }
+
+        @keyframes hueShift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        /* main scam-card */
+        .hero-card {
+            background: #000000cc;
+            backdrop-filter: blur(12px);
+            border: 4px solid #f0f;
+            border-radius: 48px;
+            padding: 2rem 1.5rem;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), 0 0 10px cyan, inset 0 0 20px rgba(255,255,0,0.3);
+            transition: all 0.2s;
+            z-index: 10;
+            animation: borderPulse 0.8s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: #ff00cc; box-shadow: 0 0 15px #ff00cc; }
+            100% { border-color: #00ffff; box-shadow: 0 0 35px #0ff, 0 0 15px yellow; }
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #ff00cc, #ffcc00, #0ff, #ff0066);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textFlow 1.3s infinite alternate, shake 0.2s infinite;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 2px;
+            word-break: break-word;
+        }
+
+        @keyframes textFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px); }
+            100% { transform: translate(-1px, -1px);}
+        }
+
+        .sub {
+            font-size: 0.9rem;
+            color: #f3ff86;
+            text-shadow: 1px 1px 0 red;
+            margin: 10px 0;
+            background: #000000aa;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-weight: bold;
+        }
+
+        .warning-gif {
+            background: #0f0f0f;
+            padding: 10px;
+            border-radius: 30px;
+            margin: 15px 0;
+            border-left: 8px solid gold;
+            border-right: 8px solid hotpink;
+        }
+
+        .warning-text {
+            font-family: 'Impact', cursive;
+            font-size: 1.2rem;
+            color: #ffd966;
+            letter-spacing: 2px;
+        }
+
+        /* real INPUT GROUP */
+        .real-id-area {
+            background: #1e1a2f;
+            border-radius: 60px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed cyan;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        input, select {
+            background: black;
+            border: 3px solid #ff44ee;
+            padding: 12px 20px;
+            font-family: monospace;
+            font-size: 1rem;
+            color: #0f0;
+            border-radius: 60px;
+            outline: none;
+            font-weight: bold;
+            text-align: center;
+            width: 200px;
+        }
+
+        .flash-btn {
+            background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet);
+            background-size: 400% 400%;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            font-family: 'Impact', monospace;
+            color: white;
+            text-shadow: 2px 2px 0 black;
+            border-radius: 80px;
+            cursor: pointer;
+            transition: 0.1s linear;
+            animation: bgRoll 0.6s infinite alternate, buzz 0.05s infinite;
+            box-shadow: 0 0 20px rgba(255,255,0,0.8);
+        }
+
+        .flash-btn:disabled {
+            opacity: 0.85;
+            cursor: wait;
+            filter: grayscale(0.15);
+        }
+
+        .flash-btn .btn-loader {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.45);
+            border-top-color: #fff;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-left: 10px;
+            animation: spinLoader 0.7s linear infinite;
+        }
+
+        .flash-btn.is-loading .btn-loader {
+            display: inline-block;
+        }
+
+        @keyframes spinLoader {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bgRoll {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes buzz {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+
+        .flash-btn:active {
+            transform: scale(0.96);
+            filter: brightness(1.5);
+        }
+
+        .result-box {
+            background: #000000aa;
+            border-radius: 40px;
+            padding: 18px;
+            margin-top: 25px;
+            font-family: monospace;
+            font-weight: bold;
+            word-break: break-all;
+            border: 1px solid gold;
+            box-shadow: inset 0 0 20px purple, 0 0 10px cyan;
+        }
+
+        .result-box.reveal {
+            animation: resultIn 0.45s ease;
+        }
+
+        @keyframes resultIn {
+            0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .scan-status {
+            margin-top: 10px;
+            font-size: 0.78rem;
+            color: #8fffe5;
+            min-height: 1.4em;
+            text-shadow: 0 0 4px rgba(0, 255, 210, 0.6);
+            letter-spacing: 0.6px;
+        }
+
+        .real-payment-area {
+            background: #171c33;
+            border-radius: 34px;
+            padding: 18px 14px;
+            margin: 22px 0 12px;
+            border: 2px dashed #67ffe0;
+            box-shadow: inset 0 0 14px rgba(0, 255, 210, 0.18);
+        }
+
+        .real-payment-title {
+            color: #8fffe5;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .real-payment-note {
+            color: #ffe586;
+            font-size: 0.76rem;
+            margin-bottom: 10px;
+        }
+
+        .real-payment-area input {
+            width: min(240px, 100%);
+        }
+
+        .real-payment-status {
+            margin-top: 8px;
+            min-height: 1.3em;
+            font-size: 0.78rem;
+            color: #84ffd4;
+        }
+
+        .joke-disclaimer {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #b9fff2;
+            background: #0b111f;
+            border: 1px solid #4ee0c0;
+            border-radius: 14px;
+            padding: 8px 10px;
+            line-height: 1.4;
+        }
+
+        .temp-cred {
+            font-size: 1.3rem;
+            background: #0a0f0a;
+            padding: 15px;
+            border-radius: 30px;
+            color: #adff2f;
+            letter-spacing: 1px;
+        }
+
+        /* Gambling ads section — flashy pop */
+        .gambling-zone {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .ad-card {
+            background: #222;
+            border-radius: 28px;
+            padding: 12px 8px;
+            flex: 1 1 160px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            border: 2px solid rgb(255, 215, 0);
+            animation: adBlink 0.9s infinite;
+            box-shadow: 0 0 12px red;
+        }
+
+        @keyframes adBlink {
+            0% { border-color: gold; background: #2a1f2a; }
+            100% { border-color: fuchsia; background: #1f2a2a; text-shadow: 0 0 5px white; }
+        }
+
+        .ad-card h3 {
+            color: #ffb347;
+            font-size: 1.2rem;
+            text-decoration: underline;
+        }
+
+        .ad-card p {
+            color: #fff0a3;
+            font-size: 0.75rem;
+        }
+
+        .spin-slot {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: black;
+            border-radius: 30px;
+            margin: 5px auto;
+            display: inline-block;
+            padding: 5px 12px;
+        }
+
+        .marquee {
+            background: black;
+            color: yellow;
+            padding: 8px;
+            font-family: monospace;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 2px solid magenta;
+        }
+
+        footer {
+            margin-top: 28px;
+            font-size: 10px;
+            color: gray;
+        }
+
+        @media (max-width: 550px) {
+            h1 { font-size: 1.8rem; }
+            .flash-btn { font-size: 1rem; padding: 10px 20px; }
+        }
+    </style>
+</head>
+<body class="preload">
+<div class="boot-overlay" id="bootOverlay" aria-live="polite">
+    <div class="boot-panel">
+        <div class="boot-title">Initializing Satire Bypass Engine...</div>
+        <div class="boot-progress">
+            <div class="boot-fill" id="bootFill"></div>
+        </div>
+        <div class="boot-lines" id="bootLines"></div>
+    </div>
+</div>
+<div class="glitch-bg"></div>
+
+<div class="hero-card">
+    <div class="marquee">
+        ⚠️🔥 ** DINDEGDPS KILLER 🔥⚠️ || 100% UNDETECTED || real TEMP ID MAKER || GAMBLING BONANZA 🔥💰
+    </div>
+    <h1>⚡ BYPASS DINDEGDPS ⚡<br> ID VERIFICATION & TEMP ACCOUNT MAKER</h1>
+    <div class="sub">[ 🧨 real VERIFICATION TOOL | FOR SATIRE & JOKE USE ONLY 🧨 ]</div>
+
+    <div class="warning-gif">
+        <div class="warning-text">💀🔥 **WARNING: EXTREME 100% REAL HACKING TOOL** 🔥💀 <br> 
+        🤖 Bypass any DindeGDPS crap in 0.0001 sec | Generate temporary accounts 🤖</div>
+    </div>
+
+    <!-- real ID area -->
+    <div class="real-id-area">
+        <div style="color:#ff77aa; margin-bottom: 10px;">✋ ENTER ANY real DETAILS (JOKE MODE) ✋</div>
+        <div class="input-group">
+            <input type="text" id="realName" placeholder="real FULL NAME" value="ACCOUNT NAME">
+            <input type="text" id="realID" placeholder="real ID NUMBER" value="DINDEGDPS-123-42X">
+        </div>
+        <div class="input-group">
+            <select id="tempCountry">
+                <option value="realLand 🏝️"> BELGIUM 🏝️</option>
+                <option value="Gamblonia 🎰">🎲 LAS VEGAS 🎰</option>
+                <option value="Dindeg Republic">💸 Dinde Republic</option>
+                <option value="NFTopia">🖼️ NFTopia</option>
+            </select>
+            <select id="tempPlan">
+                <option value="ULTRA TEMP">🔥 ULTRA TEMP (7 days)</option>
+                <option value="LEAK MODE">💎 LEAK MODE (24h)</option>
+                <option value="GAMBLER GOLD">🎰 GAMBLER GOLD (1 hour)</option>
+            </select>
+        </div>
+        <button class="flash-btn" id="bypassBtn">
+            <span id="bypassBtnLabel">🚀 BYPASS & GENERATE TEMP ACCOUNT 🚀</span>
+            <span class="btn-loader" aria-hidden="true"></span>
+        </button>
+        <div class="scan-status" id="scanStatus">SYSTEM: Idle. Ready for real verification.</div>
+        <div id="bypassResult" class="result-box" style="display: none;">
+            <div style="color: cyan;">✅ [ BYPASS SUCCESSFUL ] ✅</div>
+            <div id="tempCredentials" class="temp-cred">🟢 temp_user:xxxxx 🟢</div>
+            <div style="color: yellow; font-size: 12px;">* This account is purely fictional / joke *</div>
+        </div>
+    </div>
+
+    <!-- FLASHY GAMBLING ADS SECTION -->
+    <div class="gambling-zone">
+        <div class="ad-card">
+            <h3>🎰 MEGA JACKPOT SLOTS 🎰</h3>
+            <div class="spin-slot" id="slotMachine">🍒 🍋 💎</div>
+            <button class="flash-btn" id="spinSlot" style="padding: 6px 12px; font-size: 0.8rem;">SPIN FOR FUN</button>
+            <p>🔥 1000% DEPOSIT BONUS 🔥 | *Parody ad*</p>
+        </div>
+        <div class="ad-card">
+            <h3>⚡ CRYPTO CASINO ⚡</h3>
+            <p>✨ BET with creator points ✨<br> <span id="cryptoPrice">$0.0001 → 🚀 MOON</span></p>
+            <div style="background:black; border-radius:20px; padding:5px;">💎 WIN up to 9999x 💎</div>
+        </div>
+        <div class="ad-card">
+            <h3>🔥 DINDEGDPS LOOPHOLE 🔥</h3>
+            <p>🎲 SPIN THE WHEEL OF FORTUNE! 🎲</p>
+            <div id="wheelResult">👉 CLICK TO SPOOF 👈</div>
+            <button class="flash-btn" id="wheelBtn" style="padding: 4px 12px; font-size: 0.7rem; margin-top: 6px;">🎡 RIGGED WHEEL</button>
+        </div>
+    </div>
+    <div class="gambling-zone" style="margin-top: 8px;">
+        <div class="ad-card" style="flex:2">
+            <h3>⚠️ LIVE DEALER SCAM WARNING ⚠️</h3>
+            <p>〽️ Placereal bets & win nothing! 〽️ Get free “temporary dopamine” with our ads</p>
+            <marquee direction="left" style="color:#ffcc88; background:#000; border-radius: 20px;">🎲 PLAY NOW 🎰 BONUS 500% 🎲 EXCLUSIVE VIP 🎰</marquee>
+        </div>
+    </div>
+
+    <div class="real-payment-area">
+        <div class="real-payment-title">real Verification Billing Form (Parody)</div>
+        <div class="real-payment-note">Demo only. This form does not send data anywhere and only simulates real local validation.</div>
+        <form id="realPaymentForm" novalidate>
+            <div class="input-group" style="margin: 12px 0;">
+                <input type="text" id="realCardNumber" placeholder="real CARD NUMBER (e.g. 4111 1111 1111 1111)" autocomplete="off">
+                <input type="text" id="realCardHolder" placeholder="real CARDHOLDER NAME" autocomplete="off">
+            </div>
+            <div class="input-group" style="margin: 12px 0;">
+                <input type="text" id="realMotherName" placeholder="MOTHER'S FIRST NAME (real)" autocomplete="off">
+                <input type="text" id="realAddress" placeholder="real ADDRESS" autocomplete="off">
+            </div>
+            <div class="input-group" style="margin: 10px 0 4px;">
+                <button type="button" class="flash-btn" id="realValidateBtn" style="font-size:0.95rem; padding: 10px 18px;">
+                    <span id="realValidateLabel">✅ VALIDATE real DETAILS</span>
+                    <span class="btn-loader" aria-hidden="true"></span>
+                </button>
+            </div>
+        </form>
+        <div class="real-payment-status" id="realPaymentStatus">LOCAL STATUS: Waiting for real input...</div>
+    </div>
+    <footer>
+ITS REALLLLL
+        <div class="joke-disclaimer">DISCLAIMER: This is purely a joke/parody website. Do not enter real personal or financial information. Nothing here performs real verification, hacking, or payment processing.</div>
+    </footer>
+</div>
+
+<script>
+    // DOM elements
+    const bypassBtn = document.getElementById('bypassBtn');
+    const resultDiv = document.getElementById('bypassResult');
+    const tempCredSpan = document.getElementById('tempCredentials');
+    const realNameInput = document.getElementById('realName');
+    const realIDInput = document.getElementById('realID');
+    const tempCountrySelect = document.getElementById('tempCountry');
+    const tempPlanSelect = document.getElementById('tempPlan');
+    const bootOverlay = document.getElementById('bootOverlay');
+    const bootFill = document.getElementById('bootFill');
+    const bootLines = document.getElementById('bootLines');
+    const bypassBtnLabel = document.getElementById('bypassBtnLabel');
+    const scanStatus = document.getElementById('scanStatus');
+    const realPaymentForm = document.getElementById('realPaymentForm');
+    const realValidateBtn = document.getElementById('realValidateBtn');
+    const realValidateLabel = document.getElementById('realValidateLabel');
+    const realPaymentStatus = document.getElementById('realPaymentStatus');
+    const realCardNumberInput = document.getElementById('realCardNumber');
+    const realCardHolderInput = document.getElementById('realCardHolder');
+    const realMotherNameInput = document.getElementById('realMotherName');
+    const realAddressInput = document.getElementById('realAddress');
+
+    // slot machine elements
+    const slotMachineDiv = document.getElementById('slotMachine');
+    const spinSlotBtn = document.getElementById('spinSlot');
+    const wheelBtn = document.getElementById('wheelBtn');
+    const wheelResultSpan = document.getElementById('wheelResult');
+    let bypassInProgress = false;
+
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function runBootSequence() {
+        const stages = [
+            'Handshake with DindeGDPS mirror... OK',
+            'Decrypting imaginary endpoint... OK',
+            'Loading spoof modules... OK',
+            'Preparing parody dashboard... READY'
+        ];
+
+        for (let i = 0; i < stages.length; i++) {
+            const percent = Math.round(((i + 1) / stages.length) * 100);
+            bootFill.style.width = `${percent}%`;
+            const line = document.createElement('span');
+            line.textContent = `> ${stages[i]}`;
+            bootLines.appendChild(line);
+            await delay(420);
+        }
+
+        await delay(250);
+        bootOverlay.classList.add('hidden');
+        document.body.classList.remove('preload');
+        setTimeout(() => bootOverlay.remove(), 420);
+    }
+
+    // helper: random string generator (for real temp credentials)
+    function randomString(len = 8) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let res = '';
+        for (let i = 0; i < len; i++) {
+            res += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return res;
+    }
+
+    function generateTempAccount() {
+        const realName = realNameInput.value.trim() || "ANONYMOUS";
+        const realIdVal = realIDInput.value.trim() || "NULL";
+        const country = tempCountrySelect.options[tempCountrySelect.selectedIndex]?.text || "realLand";
+        const plan = tempPlanSelect.value;
+
+        // epic random nonsense for "bypassed" ID
+        const tempUser = `temp_${randomString(6)}`;
+        const tempPass = `pass_${randomString(8)}!`;
+        const realSession = `SID:${randomString(12).toUpperCase()}`;
+        const spoofedDindeg = `DINDEG_TOKEN_${Math.floor(Math.random()*1000000)}`;
+
+        return `
+            🔓 ACCOUNT READY 🔓<br>
+            <span style="color:#aaffaa;">➤ Username:</span> ${tempUser}<br>
+            <span style="color:#aaffaa;">➤ Password:</span> ${tempPass}<br>
+            <span style="color:#aaffaa;">➤ Session:</span> ${realSession}<br>
+            <span style="color:#ffaa88;">✓ Bypassed DindeGDPS using [${realName}|${realIdVal}]</span><br>
+            <span style="color:#88ffcc;">🌍 Region Spoof:</span> ${country} | ${plan}<br>
+            <span style="color:cyan;">⚡ Spoofed ID checksum:</span> ${spoofedDindeg}<br>
+            <span style="font-size:10px; color:#ff69b4;">YOU ARE WELCOME!</span>
+        `;
+    }
+
+    bypassBtn.addEventListener('click', async () => {
+        if (bypassInProgress) {
+            return;
+        }
+        bypassInProgress = true;
+        bypassBtn.classList.add('is-loading');
+        bypassBtn.disabled = true;
+
+        const progressLines = [
+            'SYSTEM: Building temporary spoof profile...',
+            'SYSTEM: Faking checksum and region stamp...',
+            'SYSTEM: Injecting parody session token...',
+            'SYSTEM: Finalizing real credentials...'
+        ];
+
+        for (let i = 0; i < progressLines.length; i++) {
+            scanStatus.textContent = progressLines[i];
+            bypassBtnLabel.textContent = `⏳ PROCESSING ${Math.round(((i + 1) / progressLines.length) * 100)}%`;
+            await delay(480 + i * 80);
+        }
+
+        // show result with glitchy flash effect
+        if (resultDiv.style.display === 'none') {
+            resultDiv.style.display = 'block';
+        }
+
+        // generate random credentials content
+        const credHtml = generateTempAccount();
+        tempCredSpan.innerHTML = credHtml;
+        resultDiv.classList.remove('reveal');
+        void resultDiv.offsetWidth;
+        resultDiv.classList.add('reveal');
+        scanStatus.textContent = 'SYSTEM: Spoof completed. real account packet generated.';
+        bypassBtnLabel.textContent = '🚀 BYPASS & GENERATE TEMP ACCOUNT 🚀';
+        bypassBtn.classList.remove('is-loading');
+        bypassBtn.disabled = false;
+        bypassInProgress = false;
+
+        // add extra flash effect on button and body
+        bypassBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => { bypassBtn.style.transform = ''; }, 120);
+
+        // random "ad-like" pop-up effect
+        const ads = document.querySelectorAll('.ad-card');
+        ads.forEach((ad, idx) => {
+            setTimeout(() => {
+                ad.style.filter = 'brightness(1.6) drop-shadow(0 0 4px gold)';
+                setTimeout(() => { ad.style.filter = ''; }, 300);
+            }, idx * 50);
+        });
+
+        // Also flash the result box
+        resultDiv.style.animation = 'none';
+        setTimeout(() => { resultDiv.style.animation = ''; }, 10);
+        resultDiv.style.boxShadow = '0 0 30px red';
+        setTimeout(() => { resultDiv.style.boxShadow = ''; }, 400);
+    });
+
+    // SLOT MACHINE GAMBLING AD (real)
+    const slotSymbols = ['🍒', '🍋', '🍊', '🍉', '💎', '7️⃣', '💰', '🎰', '⭐', '🔥'];
+    function randomSlotSymbol() {
+        return slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+    }
+
+    function updateSlotMachine() {
+        const sym1 = randomSlotSymbol();
+        const sym2 = randomSlotSymbol();
+        const sym3 = randomSlotSymbol();
+        slotMachineDiv.innerHTML = `${sym1} ${sym2} ${sym3}`;
+        // funny check for "jackpot" message (just for laugh)
+        if (sym1 === sym2 && sym2 === sym3) {
+            slotMachineDiv.style.background = "gold";
+            slotMachineDiv.style.color = "black";
+            slotMachineDiv.style.boxShadow = "0 0 20px yellow";
+            setTimeout(() => {
+                slotMachineDiv.style.background = "";
+                slotMachineDiv.style.boxShadow = "";
+            }, 600);
+            // show a brief toast gambling message (real alert but non-intrusive)
+            const msgDiv = document.createElement('div');
+            msgDiv.innerText = '🎉🔥 MEGA JACKPOT ON AD! (NOT REAL WINNINGS) 🔥🎉';
+            msgDiv.style.position = 'fixed';
+            msgDiv.style.bottom = '20px';
+            msgDiv.style.left = '20px';
+            msgDiv.style.background = 'black';
+            msgDiv.style.border = '3px solid gold';
+            msgDiv.style.padding = '8px 16px';
+            msgDiv.style.borderRadius = '30px';
+            msgDiv.style.fontWeight = 'bold';
+            msgDiv.style.zIndex = '9999';
+            msgDiv.style.fontFamily = 'monospace';
+            document.body.appendChild(msgDiv);
+            setTimeout(() => { msgDiv.remove(); }, 2000);
+        } else {
+            slotMachineDiv.style.background = "#111";
+            slotMachineDiv.style.color = "#ffcc00";
+        }
+    }
+
+    spinSlotBtn.addEventListener('click', async () => {
+        if (spinSlotBtn.disabled) {
+            return;
+        }
+        const prevText = spinSlotBtn.textContent;
+        spinSlotBtn.disabled = true;
+        spinSlotBtn.classList.add('is-loading');
+        spinSlotBtn.textContent = 'SPINNING...';
+
+        for (let i = 0; i < 5; i++) {
+            updateSlotMachine();
+            await delay(120);
+        }
+        updateSlotMachine();
+
+        // Add random flashing to gambling zone ad
+        spinSlotBtn.style.animation = 'buzz 0.1s 2';
+        setTimeout(() => { spinSlotBtn.style.animation = ''; }, 200);
+        // real credit sound/effect just for fun
+        const realCreditMsg = document.createElement('div');
+        realCreditMsg.innerText = '💰 +0.000 real COINS 💰';
+        realCreditMsg.style.position = 'fixed';
+        realCreditMsg.style.right = '20px';
+        realCreditMsg.style.top = '50%';
+        realCreditMsg.style.background = 'linear-gradient(45deg, purple, black)';
+        realCreditMsg.style.color = '#ffcc44';
+        realCreditMsg.style.padding = '5px 10px';
+        realCreditMsg.style.borderRadius = '20px';
+        realCreditMsg.style.fontSize = '12px';
+        realCreditMsg.style.zIndex = '999';
+        document.body.appendChild(realCreditMsg);
+        setTimeout(() => realCreditMsg.remove(), 1000);
+
+        spinSlotBtn.textContent = prevText;
+        spinSlotBtn.classList.remove('is-loading');
+        spinSlotBtn.disabled = false;
+    });
+
+    // rigged wheel of fortune gambling ad
+    const wheelOutcomes = [
+        "🍀 YOU WON 1000 creator pointsS! (real rewards)",
+        "🎁 SPIN AGAIN - YOU LOST EVERYTHING (just for laughs)",
+        "💎 JACKPOT! 0 ETH credited to your imagination",
+        "🃏 Better luck next time! No actual prize",
+        "🏆 DINDEGDPS BONUS ROUND: +500 real XP",
+        "⚠️ YOU TRIGGERED A VIRUS (just kidding, it's a joke)",
+        "🎰 3x WILD! But the casino is imaginary",
+        "🤡 YOU'RE A WINNER! claim $0 in our parody store"
+    ];
+
+    function spinWheel() {
+        const randomIndex = Math.floor(Math.random() * wheelOutcomes.length);
+        const outcome = wheelOutcomes[randomIndex];
+        wheelResultSpan.innerHTML = outcome;
+        // make it flashy
+        wheelResultSpan.style.background = '#ff00aa30';
+        wheelResultSpan.style.padding = '5px';
+        wheelResultSpan.style.borderRadius = '20px';
+        setTimeout(() => {
+            wheelResultSpan.style.background = '';
+        }, 500);
+        // extra ad pop for gambling
+        const adOwner = document.querySelector('.ad-card:last-child');
+        if (adOwner) {
+            adOwner.style.transform = 'scale(1.02)';
+            setTimeout(() => adOwner.style.transform = '', 200);
+        }
+    }
+
+    wheelBtn.addEventListener('click', async () => {
+        if (wheelBtn.disabled) {
+            return;
+        }
+        wheelBtn.disabled = true;
+        wheelBtn.classList.add('is-loading');
+        wheelBtn.innerText = '🎡 CALIBRATING...';
+        await delay(480);
+
+        spinWheel();
+        wheelBtn.innerText = '🎲 SPIN AGAIN! 🎲';
+        setTimeout(() => { wheelBtn.innerText = '🎡 RIGGED WHEEL'; }, 1200);
+        setTimeout(() => {
+            wheelBtn.classList.remove('is-loading');
+            wheelBtn.disabled = false;
+        }, 420);
+    });
+
+    // keep this form local-only and never submit anywhere
+    realPaymentForm.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+    });
+
+    realValidateBtn.addEventListener('click', async () => {
+        if (realValidateBtn.disabled) {
+            return;
+        }
+
+        realValidateBtn.disabled = true;
+        realValidateBtn.classList.add('is-loading');
+        realValidateLabel.textContent = 'CHECKING LOCALLY...';
+        realPaymentStatus.textContent = 'LOCAL STATUS: Parsing parody payment payload...';
+        await delay(500);
+        realPaymentStatus.textContent = 'LOCAL STATUS: Running real anti-fraud theatrics...';
+        await delay(520);
+
+        const realCard = realCardNumberInput.value.trim() || 'NO-CARD';
+        const realHolder = realCardHolderInput.value.trim() || 'NO-NAME';
+        const realMother = realMotherNameInput.value.trim() || 'NO-MOTHER-NAME';
+        const realAddr = realAddressInput.value.trim() || 'NO-ADDRESS';
+
+        const tail = realCard.replace(/\s+/g, '').slice(-4) || '0000';
+        realPaymentStatus.textContent = `LOCAL STATUS: real OK - Card ****${tail} | Holder ${realHolder} | Mother ${realMother} | Address ${realAddr}`;
+        realValidateLabel.textContent = '✅ VALIDATE real DETAILS';
+        realValidateBtn.classList.remove('is-loading');
+        realValidateBtn.disabled = false;
+    });
+
+    // Additional chaotic marquee animation: update crypto price every 3 seconds (real)
+    const cryptoPriceSpan = document.getElementById('cryptoPrice');
+    function updateCryptoreal() {
+        const randomChange = (Math.random() * 0.005 + 0.0001).toFixed(5);
+        const isUp = Math.random() > 0.5;
+        const newPrice = isUp ? `↑ $${randomChange}` : `↓ $${randomChange}`;
+        cryptoPriceSpan.innerHTML = `💰 real COIN: ${newPrice} 🚀`;
+        cryptoPriceSpan.style.animation = 'none';
+        setTimeout(() => cryptoPriceSpan.style.animation = '', 50);
+    }
+    setInterval(updateCryptoreal, 2800);
+    updateCryptoreal();
+
+    // initial slot machine random
+    updateSlotMachine();
+    // initial wheel text
+    wheelResultSpan.innerHTML = '👉 CLICK TO SPOOF 👈';
+    runBootSequence();
+
+    // make inputs have placeholder effect to seem "sketchy"
+    const allInputs = document.querySelectorAll('input, select');
+    allInputs.forEach(el => {
+        el.addEventListener('focus', () => {
+            el.style.borderColor = '#ff55ff';
+            el.style.boxShadow = '0 0 12px magenta';
+        });
+        el.addEventListener('blur', () => {
+            el.style.borderColor = '#ff44ee';
+            el.style.boxShadow = 'none';
+        });
+    });
+    
+    // random console log prank (satire)
+    console.log("%c🔥 DINDEGDPS BYPASS ACTIVATED 🔥 THIS IS A JOKE / SATIRE WEBSITE", "color: limegreen; font-size: 16px; font-weight: bold;");
+    console.log("%cNo actual hacking, no real temp accounts. Gambling ads are parodies.", "color: gold;");
+</script>
+</body>
+</html>
