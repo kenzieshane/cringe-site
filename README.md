@@ -1,2 +1,2 @@
 # cringe-site
-lmao fake shitty site
+a fake horrendous site
